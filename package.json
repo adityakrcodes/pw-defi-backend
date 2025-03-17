@@ -1,21 +1,23 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
+  "name": "pw-defi-backend",
+  "version": "0.0.1",
+  "description": "Backend for BKR DeFi",
+  "homepage": "https://github.com/adityakrcodes/pw-defi-backend#readme",
+  "bugs": {
+    "url": "https://github.com/adityakrcodes/pw-defi-backend/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adityakrcodes/pw-defi-backend.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
-    "axios": "^1.7.9",
-    "bcrypt": "^5.1.1",
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "mongodb": "^6.13.0",
-    "mongoose": "^8.12.1"
+    "express": "^4.21.2"
   }
 }
