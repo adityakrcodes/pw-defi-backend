@@ -4,10 +4,12 @@ const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./config/db.ts');
 const User = require('./models/User.ts');
+const cors = require('cors');
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
@@ -55,10 +57,14 @@ app.post('/api/checkId', async (req, res) => {
     }
     else {
         if (await User.exists({ walletAddress: walletAddress['wallet'] })) {
-            res.status(200).send('User exists');
+            res.status(200).json({ 
+                exists: true
+             });
         }
         else {
-            res.status(404).send('User does not exist');
+            res.status(404).json({
+                exists: false
+            });
         }
     }
 });
