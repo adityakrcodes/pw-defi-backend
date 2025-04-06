@@ -1,4 +1,5 @@
 let mongo = require('mongoose');
+let bcrypt = require('bcrypt');
 
 const User = new mongo.Schema({
     createdAt: {
@@ -28,10 +29,23 @@ const User = new mongo.Schema({
         required: true,
         unique: true
     },
-    passHash: {
+    password: {
         type: String,
         required: true
     }
 });
+
+User.pre('save', async function(next) {
+    if (!this.isModified('password')) {
+      return next();
+    }
+    try {
+      const salt = await bcrypt.genSalt(10);
+      this.password = await bcrypt.hash(this.password, salt);
+      next();
+    } catch (error) {
+      next(error);
+    }
+  });
 
 module.exports = mongo.model('User', User);
