@@ -11,15 +11,15 @@ const User = new mongo.Schema({
         required: true,
         unique: true
     },
-    firstName:{
+    firstname:{
         type: String,
         required: true
     },
-    lastName:{
+    lastname:{
         type: String,
         required: true
     },
-    userName: {
+    username: {
         type: String,
         required: true,
         unique: true

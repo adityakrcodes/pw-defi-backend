@@ -28,12 +28,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/createUser', async (req, res) => {
-    const { walletAddress, firstName, lastName, userName, email, password } = req.body;
+    const { walletAddress, firstname, lastname, username, email, password } = req.body;
     const user = new User({
         walletAddress,
-        firstName,
-        lastName,
-        userName,
+        firstname,
+        lastname,
+        username,
         email,
         password
     });
