@@ -5,6 +5,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db.ts');
 const User = require('./models/User.ts');
 const cors = require('cors');
+const authRouter = require('./routes/authRoute.ts');
+
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
