@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/auth', authRouter);
 
 app.get('/', (req, res) => {
     if(mongoose.connection.readyState === 1) {
@@ -29,7 +30,7 @@ app.get('/', (req, res) => {
     }
 });
 
-app.post('/api/createUser', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     const { walletAddress, firstname, lastname, username, email, password } = req.body;
     const user = new User({
         walletAddress,
