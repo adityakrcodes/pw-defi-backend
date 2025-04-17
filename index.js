@@ -72,6 +72,21 @@ app.post('/api/checkId', async (req, res) => {
     }
 });
 
+app.get('/api/getUser/:walletAddress', async (req, res) => {
+    const walletAddress = req.params.walletAddress;
+    console.log('Fetching user data');
+    console.log(walletAddress);
+    try {
+        const user = await User.findOne({ walletAddress: walletAddress });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        console.log(error);
+        res.status(400).send(error);
+    }
+});
 
 app.listen(PORT, () => {
     console.clear();
