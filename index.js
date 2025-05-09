@@ -104,6 +104,12 @@ app.post('/api/createTransaction', async (req, res) => {
     }
 });
 
+app.get('/api/getTransactions/:walletAddress', async (req, res) => {
+    const walletAddress = req.params.walletAddress;
+    const transactions = await Transaction.find({ walletAddress: walletAddress });
+    res.status(200).json(transactions);
+});
+
 app.listen(PORT, () => {
     console.clear();
     console.log(`Server is running on port ${PORT}`);
