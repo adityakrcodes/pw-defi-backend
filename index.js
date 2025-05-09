@@ -91,9 +91,9 @@ app.get('/api/getUser/:walletAddress', async (req, res) => {
 
 app.post('/api/createTransaction', async (req, res) => {
     console.log('Creating a transaction');
-    const { walletAddress, token, amount, transactionType, transactionStatus, transactionHash } = req.body;
+    const { walletAddress, receiverAddress, token, amount, transactionType, transactionStatus, transactionHash } = req.body;
     const transaction = new Transaction({
-        walletAddress, token, amount, transactionType, transactionStatus, transactionHash
+        walletAddress, receiverAddress, token, amount, transactionType, transactionStatus, transactionHash
     });
     try {
         await transaction.save();

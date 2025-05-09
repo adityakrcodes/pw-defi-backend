@@ -9,6 +9,10 @@ let Transaction = new mongo.Schema({
         type: String,
         required: true
     },
+    receiverAddress: {
+        type: String,
+        required: true
+    },
     token: {
         type: String,
         required: true
