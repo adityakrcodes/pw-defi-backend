@@ -4,6 +4,7 @@ const app = express();
 const dotenv = require('dotenv');
 const connectDB = require('./config/db.ts');
 const User = require('./models/User.ts');
+const Transaction = require('./models/Transaction.ts');
 const cors = require('cors');
 const authRouter = require('./routes/authRoute.ts');
 
@@ -85,6 +86,21 @@ app.get('/api/getUser/:walletAddress', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(400).send(error);
+    }
+});
+
+app.post('/api/createTransaction', async (req, res) => {
+    console.log('Creating a transaction');
+    const { walletAddress, token, amount, transactionType, transactionStatus, transactionHash } = req.body;
+    const transaction = new Transaction({
+        walletAddress, token, amount, transactionType, transactionStatus, transactionHash
+    });
+    try {
+        await transaction.save();
+        res.status(201).json(transaction);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ message: 'Failed to create transaction', error });
     }
 });
 
